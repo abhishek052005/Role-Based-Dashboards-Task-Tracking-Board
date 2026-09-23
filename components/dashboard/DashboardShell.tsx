@@ -53,9 +53,9 @@ export const DashboardShell: React.FC<DashboardShellProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen text-slate-100 flex flex-col font-sans">
       {/* Top Header */}
-      <header className="sticky top-0 z-40 bg-slate-900 border-b border-slate-800 px-4 py-3 shadow-xs">
+      <header className="sticky top-0 z-40 bg-black/90 border-b border-neutral-800 px-4 py-3 backdrop-blur-xl shadow-lg shadow-black/20">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           {/* Brand Logo & Mobile Toggle */}
           <div className="flex items-center gap-3">
@@ -68,7 +68,7 @@ export const DashboardShell: React.FC<DashboardShellProps> = ({
             </button>
 
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-extrabold text-sm shadow-sm">
+              <div className="w-9 h-9 rounded-lg bg-white flex items-center justify-center text-black font-extrabold text-sm shadow-lg shadow-white/10">
                 RMH
               </div>
               <div>
@@ -99,7 +99,7 @@ export const DashboardShell: React.FC<DashboardShellProps> = ({
                 onClick={() => setIsRoleDropdownOpen(!isRoleDropdownOpen)}
                 className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg text-xs font-bold transition-colors border border-slate-700 text-white"
               >
-                <Shield className="w-3.5 h-3.5 text-indigo-400" />
+                  <Shield className="w-3.5 h-3.5 text-white" />
                 <span className="hidden sm:inline text-slate-400">Role:</span>
                 <span className={`px-2 py-0.5 rounded text-[10px] ${roleMeta[currentUser.role].badge}`}>
                   {roleMeta[currentUser.role].label}
@@ -150,14 +150,14 @@ export const DashboardShell: React.FC<DashboardShellProps> = ({
       <div className="max-w-7xl w-full mx-auto flex-1 flex">
         {/* Sidebar */}
         <aside
-          className={`fixed lg:static inset-y-0 left-0 z-30 w-64 bg-slate-900 border-r border-slate-800 p-4 transition-transform duration-200 ease-in-out ${
+          className={`fixed lg:static inset-y-0 left-0 z-30 w-64 bg-[#101010]/95 border-r border-neutral-800 p-4 transition-transform duration-200 ease-in-out ${
             isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
           }`}
         >
           <div className="space-y-6 pt-16 lg:pt-0">
             {/* User Profile Badge */}
             <div className="p-3.5 bg-slate-800/60 rounded-xl border border-slate-800 flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-bold text-sm">
+              <div className="w-9 h-9 rounded-lg bg-white text-black flex items-center justify-center font-bold text-sm">
                 {currentUser.name.charAt(0)}
               </div>
               <div className="overflow-hidden">
@@ -182,7 +182,7 @@ export const DashboardShell: React.FC<DashboardShellProps> = ({
                 }}
                 className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-colors ${
                   activeTab === 'dashboard'
-                    ? 'bg-indigo-600 text-white shadow-sm'
+                    ? 'bg-white text-black shadow-lg shadow-white/10'
                     : 'text-slate-400 hover:bg-slate-800 hover:text-white'
                 }`}
               >
@@ -197,7 +197,7 @@ export const DashboardShell: React.FC<DashboardShellProps> = ({
                 }}
                 className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-colors ${
                   activeTab === 'tasks'
-                    ? 'bg-indigo-600 text-white shadow-sm'
+                    ? 'bg-white text-black shadow-lg shadow-white/10'
                     : 'text-slate-400 hover:bg-slate-800 hover:text-white'
                 }`}
               >
@@ -212,7 +212,7 @@ export const DashboardShell: React.FC<DashboardShellProps> = ({
                 }}
                 className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-colors ${
                   activeTab === 'attendance'
-                    ? 'bg-indigo-600 text-white shadow-sm'
+                    ? 'bg-white text-black shadow-lg shadow-white/10'
                     : 'text-slate-400 hover:bg-slate-800 hover:text-white'
                 }`}
               >
@@ -221,23 +221,11 @@ export const DashboardShell: React.FC<DashboardShellProps> = ({
               </button>
             </nav>
 
-            {/* Security Scope Footer */}
-            <div className="pt-4 border-t border-slate-800 text-[11px] text-slate-400 space-y-1">
-              <div className="font-bold text-slate-400 uppercase text-[9px] tracking-wider">
-                RBAC Security Scope
-              </div>
-              <p className="text-xs leading-relaxed text-slate-300">
-                {currentUser.role === 'PARTNER_ADMIN' && 'Firm-wide full access'}
-                {currentUser.role === 'HR_MANAGER' && 'Organization HR & attendance access'}
-                {currentUser.role === 'TEAM_LEAD' && 'Team-scoped access'}
-                {currentUser.role === 'EMPLOYEE' && 'Self-only privacy isolated view'}
-              </p>
-            </div>
           </div>
         </aside>
 
         {/* Main Content Area */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-x-hidden">{children}</main>
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-x-hidden max-w-[calc(100%-0px)]">{children}</main>
       </div>
     </div>
   );

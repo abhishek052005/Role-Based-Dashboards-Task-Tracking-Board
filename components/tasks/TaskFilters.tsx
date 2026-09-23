@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { TaskFilterOptions, User, Client } from '@/lib/types';
-import { Search, Filter, X } from 'lucide-react';
+import { Search, SlidersHorizontal, X } from 'lucide-react';
 
 interface TaskFiltersProps {
   filters: TaskFilterOptions;
@@ -22,7 +22,11 @@ export const TaskFilters: React.FC<TaskFiltersProps> = ({
   const isEmployee = currentUser.role === 'EMPLOYEE';
 
   return (
-    <div className="bg-slate-900/90 rounded-2xl p-4 sm:p-5 border border-slate-800 shadow-md mb-6 space-y-3 backdrop-blur-md">
+    <div className="bg-slate-900/70 rounded-xl p-4 sm:p-5 border border-slate-800/90 shadow-lg shadow-black/10 mb-6 space-y-3 backdrop-blur-md">
+      <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">
+        <SlidersHorizontal className="w-3.5 h-3.5 text-cyan-400" />
+        Workload filters
+      </div>
       <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3">
         {/* Search Input */}
         <div className="relative flex-1">

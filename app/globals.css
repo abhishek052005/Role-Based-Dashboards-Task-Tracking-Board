@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #090d16;
+  --background: #0a0a0a;
   --foreground: #f8fafc;
-  --card-bg: #111827;
-  --card-border: #1f2937;
-  --muted-text: #9ca3af;
+  --card-bg: #141414;
+  --card-border: #2a2a2a;
+  --muted-text: #a3a3a3;
 }
 
 @theme inline {
@@ -14,18 +14,53 @@
 }
 
 body {
-  background: #090d16;
+  background: #0a0a0a;
   color: #f8fafc;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-geist-sans), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+button,
+input,
+select {
+  font: inherit;
+}
+
+::selection {
+  background: #404040;
+  color: #ffffff;
+}
+
 /* Glassmorphism utility */
 .glass-panel {
-  background: rgba(17, 24, 39, 0.75);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #141414;
+  border: 1px solid #2a2a2a;
+}
+
+/* Keep status meaning through weight and borders, not a rainbow palette. */
+[class*="bg-indigo-"],
+[class*="bg-cyan-"],
+[class*="bg-amber-"],
+[class*="bg-emerald-"],
+[class*="bg-rose-"] {
+  background-color: #262626 !important;
+}
+
+[class*="text-indigo-"],
+[class*="text-cyan-"],
+[class*="text-amber-"],
+[class*="text-emerald-"],
+[class*="text-rose-"] {
+  color: #e5e5e5 !important;
+}
+
+[class*="border-indigo-"],
+[class*="border-cyan-"],
+[class*="border-amber-"],
+[class*="border-emerald-"],
+[class*="border-rose-"] {
+  border-color: #525252 !important;
 }
 
 /* Custom dark scrollbars */

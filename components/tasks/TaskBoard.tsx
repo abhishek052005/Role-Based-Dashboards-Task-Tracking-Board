@@ -23,29 +23,29 @@ const columns: {
     status: 'NOT_STARTED',
     label: 'Not Started',
     icon: <Clock className="w-4 h-4 text-slate-400" />,
-    headerBg: 'bg-slate-800/80 border-slate-700',
-    badgeBg: 'bg-slate-700 text-slate-200 border border-slate-600',
+    headerBg: 'bg-slate-800/70 border-slate-700/80',
+    badgeBg: 'bg-slate-700/80 text-slate-200 border border-slate-600',
   },
   {
     status: 'IN_PROGRESS',
     label: 'In Progress',
-    icon: <PlayCircle className="w-4 h-4 text-indigo-400" />,
-    headerBg: 'bg-indigo-950/40 border-indigo-900/50',
-    badgeBg: 'bg-indigo-900/80 text-indigo-300 border border-indigo-700',
+    icon: <PlayCircle className="w-4 h-4 text-slate-300" />,
+    headerBg: 'bg-slate-800/70 border-slate-700/80',
+    badgeBg: 'bg-slate-700/80 text-slate-200 border border-slate-600',
   },
   {
     status: 'UNDER_REVIEW',
     label: 'Under Review',
-    icon: <Eye className="w-4 h-4 text-amber-400" />,
-    headerBg: 'bg-amber-950/40 border-amber-900/50',
-    badgeBg: 'bg-amber-900/80 text-amber-300 border border-amber-700',
+    icon: <Eye className="w-4 h-4 text-slate-300" />,
+    headerBg: 'bg-slate-800/70 border-slate-700/80',
+    badgeBg: 'bg-slate-700/80 text-slate-200 border border-slate-600',
   },
   {
     status: 'COMPLETED',
     label: 'Completed',
-    icon: <CheckCircle2 className="w-4 h-4 text-emerald-400" />,
-    headerBg: 'bg-emerald-950/40 border-emerald-900/50',
-    badgeBg: 'bg-emerald-900/80 text-emerald-300 border border-emerald-700',
+    icon: <CheckCircle2 className="w-4 h-4 text-slate-300" />,
+    headerBg: 'bg-slate-800/70 border-slate-700/80',
+    badgeBg: 'bg-slate-700/80 text-slate-200 border border-slate-600',
   },
 ];
 
@@ -56,24 +56,23 @@ export const TaskBoard: React.FC<TaskBoardProps> = ({
   onEditClick,
 }) => {
   return (
-    /* 2X2 Rectangle Grid Layout (2 columns per row, 2 rows) */
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+    <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-4 items-start">
       {columns.map((col) => {
         const colTasks = tasks.filter((t) => t.status === col.status);
 
         return (
           <div
             key={col.status}
-            className="rounded-2xl p-5 border border-slate-800 bg-slate-900/80 min-h-[420px] flex flex-col shadow-md backdrop-blur-md"
+            className="rounded-xl p-3.5 border border-slate-800/90 bg-slate-900/65 min-h-[420px] flex flex-col shadow-lg shadow-black/10 backdrop-blur-md"
           >
             {/* Column Header Banner */}
-            <div className={`flex items-center justify-between p-3.5 rounded-xl border ${col.headerBg} mb-4 shadow-xs`}>
+            <div className={`flex items-center justify-between p-3 rounded-lg border ${col.headerBg} mb-3`}>
               <h3 className="text-xs font-extrabold text-white uppercase tracking-wider flex items-center gap-2">
                 {col.icon}
                 {col.label}
               </h3>
               <span className={`text-xs font-extrabold px-3 py-0.5 rounded-md ${col.badgeBg}`}>
-                {colTasks.length} Tasks
+                {colTasks.length}
               </span>
             </div>
 
